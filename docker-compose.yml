@@ -14,7 +14,7 @@ services:
             MYSQL_PASSWORD: db_user_pass
         restart: always
         ports:
-            - "6031:3306"
+            - "6033:3306"
         volumes:
             - ./db_authentication.sql:/docker-entrypoint-initdb.d/db_authentication.sql
             - dbdata:/var/lib/mysql
@@ -29,27 +29,27 @@ services:
             PMA_ARBITRARY: 1
         restart: always
         ports:
-            - 8082:80
+            - "8081:80"
 
 
-    nodejs:
-        build:
-            context: .
-            dockerfile: nodejs.dockerfile
-        user: "node"
-        working_dir: /home/node/app
-        environment:
-            #- NODE_ENV=production
-            - NODE_ENV=development
-        volumes:   
-            - ./app:/home/node/app
-            - /home/node/app/node_modules
-        expose:
-            - "8083"
-        ports: 
-            - "8083:8083"
-        command: "npm start"
-        #command: "npm run dev"
+#    nodejs:
+#        build:
+#            context: .
+#            dockerfile: nodejs.dockerfile
+#        user: "node"
+#        working_dir: /home/node/app
+#        environment:
+#            #- NODE_ENV=production
+#            - NODE_ENV=development
+#        volumes:
+#            - ./app:/home/node/app
+#            - /home/node/app/node_modules
+#        expose:
+#            - "8083"
+#        ports:
+#            - "8083:8083"
+#        command: "npm start"
+#        #command: "npm run dev"
 
 
 # The database will be persistent among containers restarts.

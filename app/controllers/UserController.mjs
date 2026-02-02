@@ -5,9 +5,9 @@ import express from "express";
 const router = express.Router();
 
 export const get = (req, res) => {
-  
+
     // Remplacez cette portion de code par votre traitement du jeton JWT
-    return res.status(418).json({ error: 'Je suis une théière' });
+    return res.status(418).json({error: 'Je suis une théière'});
 
 };
 
